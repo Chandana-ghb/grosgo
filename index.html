@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GROSGO</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" href="">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <!-- Left -->
+        <div class="left">
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            <nav id="menu">
+                <a href="#slider" onclick="scrollToSection(event, 'slider')">Home</a>
+                <a href="#products" onclick="scrollToSection(event, 'products')">Category</a>
+                <a href="#searchBox" onclick="scrollToSection(event, 'searchBox')">Search</a>
+                <a href="#aboutSection" onclick="scrollToSection(event, 'aboutSection')">About Us</a>
+            </nav>
+        </div>
+
+        <!-- Center -->
+        <div class="center">
+            <h1>GROSGO</h1>
+        </div>
+
+        <!-- Right -->
+        <div class="right">
+            <input type="text" placeholder="Search products..." id="searchBox" onkeyup="searchProducts()" />
+            <div class="cart" onclick="openCart()" style="cursor:pointer;">
+                🛒 <span id="count">0</span>
+            </div>
+            <select id="sortPrice" onchange="sortProducts()">
+                <option value="">Price</option>
+                <option value="low">Low → High</option>
+                <option value="high">High → Low</option>
+            </select>
+
+
+            <button class="dark-btn" onclick="toggleDark()">🌙</button>
+
+            <span id="username"></span>
+            <button id="logoutBtn" onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+
+    <!-- IMAGE SLIDER -->
+    <section class="slider" id="slider">
+        <div class="slides">
+            <div class="slide active">
+                <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c" />
+                <div class="content">
+                    <h2>Fresh Groceries</h2>
+                    <button onclick="goToProducts()">Shop Now</button>
+
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc" />
+                <div class="content">
+                    <h2>Best Quality Products</h2>
+                    <button onclick="goToProducts()">Shop Now</button>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <section class="products" id="products">
+        <h2 class="section-title">Our Products</h2>
+
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="./Assets/milk.png" />
+                <h3>Fresh Milk</h3>
+                <p class="price">₹50 / litre</p>
+                <div class="qty">
+                    <button onclick="decQty(this)">-</button>
+                    <span>1</span>
+                    <button onclick="incQty(this)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="./Assets/tomato.png" />
+                <h3>Tomato</h3>
+                <p class="price">₹50 / kg</p>
+                <div class="qty">
+                    <button onclick="decQty(this)">-</button>
+                    <span>1</span>
+                    <button onclick="incQty(this)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="./Assets/onion.png" />
+                <h3>Onion</h3>
+                <p class="price">₹120 / kg</p>
+                <div class="qty">
+                    <button onclick="decQty(this)">-</button>
+                    <span>1</span>
+                    <button onclick="incQty(this)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="./Assets/salt.png" />
+                <h3>Salt</h3>
+                <p class="price">₹25 / kg</p>
+                <div class="qty">
+                    <button onclick="decQty(this)">-</button>
+                    <span>1</span>
+                    <button onclick="incQty(this)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <img src="./Assets/sugar.png" />
+                <h3>Sugar</h3>
+                <p class="price">₹50 / kg</p>
+                <div class="qty">
+                    <button onclick="decQty(this)">-</button>
+                    <span>1</span>
+                    <button onclick="incQty(this)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <img src="./Assets/masala.png" />
+                <h3>Masala</h3>
+                <p class="price">₹60 / dozen</p>
+                <div class="qty">
+                    <button onclick="decQty(this)">-</button>
+                    <span>1</span>
+                    <button onclick="incQty(this)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="aboutSection">
+        <div class="footer-container">
+
+            <!-- About Us -->
+            <div class="footer-about">
+                <h3>About Us</h3>
+                <p>
+                    GROSGO is an online Indian grocery store offering authentic products,
+                    fresh quality, and convenient shopping experience. Our mission is to
+                    bring daily essentials at best prices with reliable service.
+                </p>
+            </div>
+
+            <!-- Social Media -->
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-buttons">
+                    <a href="https://www.facebook.com/" class="social-btn facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://www.instagram.com/" class="social-btn instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="https://x.com/?lang=en-in" class="social-btn twitter" target="_blank">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 GROSGO. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
